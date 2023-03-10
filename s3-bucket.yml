@@ -1,0 +1,19 @@
+--- 
+- name: Provisioning aws resources with this playbook
+  hosts: localhost
+  connection: local 
+  gather_facts: false 
+  become: yes  
+   
+
+  tasks:
+
+  - name: Install boto
+    pip:
+      name: boto
+      state: present   
+
+  - name: Create s3 bucket
+    s3_bucket:
+      name: jenkyterraformjawnt
+      state: present
